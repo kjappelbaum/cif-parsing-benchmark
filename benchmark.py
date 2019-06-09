@@ -32,7 +32,7 @@ elif package == 'pycodcif':
     read_cif = get_content
 
 extension='.cif'
-directory = 'structures_0100'
+directory = 'structures_0108'
 paths = glob.glob("{}/*{}".format(directory,extension))
 
 if __name__ == '__main__':
