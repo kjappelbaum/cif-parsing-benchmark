@@ -23,6 +23,9 @@ conda activate cif-benchmark
 tar xf structures_0100.tar.gz
 ```
 
+## ToDo
+- [ ] test [computational crystallography toolbox](https://cctbx.github.io) 
+
 ## Benchmark
 
 ```
@@ -39,6 +42,18 @@ snakeviz pycodcif_100.prof  # inspect one output
 * `pycifrw_100.prof`: 91.6s spent in `ReadCif`
 * `pycifrw-fast_100.prof`: 17.6s spent in `ReadCif`
 * `pycodcif_100.prof`: 16.3s spent in `parse`
+
+### Ubuntu 18.04, Intel® Core™ i7-4790 CPU @ 3.60GHz × 8, HDD 
+* Note: Extended test set! * Heavy load (both memory and CPU) parallel to benchmark. Means and standard deviations from three runs (except for `pycifrw`, where we only did two runs).  
+
+* `ase_108.prof`: memory error for mil structures (in `return sqrt(add.reduce(s, axis=axis, keepdims=keepdims)`), at time of test approx. 12 GB free memory 
+* `pymatgen_108.prof`:  629 +/- 14 s
+* `pycifrw_108.prof`: 127 +/- 2 s
+* `pycifrw-fast_108.prof`: 20 +/- 1 s 
+* `pycodcif_108.prof`: 29 +/- 1 s
+
+ASE problematic for huge structures due to inefficient (memory) representation, can not be recommended for a general purpose tool. `pycodcif` 
+seems to be the fasted implementation in this test, also with significant benefit over `pycifrw` when reading really large structures.  
 
 ## Conclusion
 
