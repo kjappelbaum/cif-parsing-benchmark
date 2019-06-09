@@ -32,6 +32,10 @@ tar xf structures_0100.tar.gz
 ./benchmark.sh  # run all benchmarks
 snakeviz pycodcif_100.prof  # inspect one output
 ```
+or inspect on the command line 
+```
+python -m pstats pycofcif_100.prof
+```
 
 ## Results
 
